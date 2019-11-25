@@ -1,30 +1,37 @@
-<h1>YO</h1>
-
-<h2>Burgers</h2>
-
-<ul>
-    {{#each dbBurger}}
-        {{#unless devoured}}
-            {{> burger-block/burger-block devoured=true}}
-        {{/unless}}
-    {{/each}}
-</ul>
-
-<h2>Eated Burger</h2>
-
-<ul>
-    {{#each dbBurger}}
-        {{#if devoured}}
-            {{> burger-block/burger-block devoured=false}}
-        {{/if}}
-    {{/each}}
-</ul>
-
-<h2>Create a burgoer fucko</h2>
-<form action="" class="make-burger">
-    <div class="form-group">
-        <label for="burger-text">Make it</label>
-        <input type="text" id="burger-text" name="burgers">
+<div class="row">
+    <div class="col-6">
+        <h1>Burger Time</h1>
     </div>
-    <button type="submit" class="add-burger">Add that borger</button>
-</form>
+    <div class="col-6">
+        <h1>Eated Burger</h1>
+    </div>
+</div>
+
+<div class="row">
+    <ul class="list-group col-6">
+        {{#each dbBurger}}
+        {{#unless devoured}}
+        {{> burger-block/burger-block devoured=true}}
+        {{/unless}}
+        {{/each}}
+    </ul>
+
+    <ul class=" list-group col-6">
+        {{#each dbBurger}}
+        {{#if devoured}}
+        {{> burger-block/burger-block devoured=false}}
+        {{/if}}
+        {{/each}}
+    </ul>
+</div>
+
+<div class="row">
+    <span class="col-2"></span>
+    <form action="" class="make-burger col-6 d-flex justify-content-around mt-3">
+        <div class="form-group align-items-center">
+            <label for="burger-text" class="lead">Burger Name: </label>
+            <input type="text" id="burger-text" name="burgers" autocomplete="off">
+        </div>
+        <button type="submit" class="btn btn-outline-dark add-burger">Add that borger</button>
+    </form>
+</div>

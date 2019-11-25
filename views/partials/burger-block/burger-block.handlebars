@@ -1,12 +1,16 @@
-<li>
-    {{dataValues.burger_name}}
+<li class="list-group-item d-inline-flex justify-content-between">
+    <p class="lead align-items-center text-center">
+        {{dataValues.burger_name}}
+    </p>
 
-    <button class="devour" data-id={{dataValues.id}} data-devoured={{devoured}}>
-        {{#if devoured}}
-        Devour this shit
-        {{else}}
-        Give it back
-        {{/if}}
-    </button>
-    <button class="delete-burger" data-id="{{dataValues.id}}">DEL</button>
+    <div class="btn-group justify-content-center">
+        <button class="btn btn-outline-dark devour" data-id={{dataValues.id}} data-devoured={{devoured}}>
+            {{#if devoured}}
+            Devour this shit
+            {{else}}
+            Give it back
+            {{/if}}
+        </button>
+        <button class="btn btn-danger delete-burger" data-id="{{dataValues.id}}">DEL</button>
+    </div>
 </li>
