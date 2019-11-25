@@ -5,6 +5,23 @@
     "database": "burgers_db",
     "host": "127.0.0.1",
     "port": 3306,
-    "dialect": "mysql"
+    "dialect": "mysql",
+  },
+  "test": {
+    "username": "root",
+    "password": "docker",
+    "database": "burgers_db",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "dialect": "mysql",
+  },
+  "production": {
+    "username": "root",
+    "password": "docker",
+    "database": "burgers_db",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "dialect": "mysql",
+    "use_env_variable": "JAWSDB_URL"
   }
 }
