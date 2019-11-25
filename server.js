@@ -1,5 +1,6 @@
 const express = require('express');
-const exphbrs = require('express-handlebars')
+const exphbrs = require('express-handlebars');
+const path = require('path')
 require('dotenv').config();
 
 const PORT = process.env.PORT || 8000;
@@ -12,7 +13,7 @@ app.use(express.urlencoded({
   extended: true
 }));
 app.use(express.json());
-app.use(express.static("./public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.engine("handlebars", exphbrs({
   defaultLayout: "main"

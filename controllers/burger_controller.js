@@ -6,10 +6,11 @@ let db = require('../models');
 
 router.get("/", (req, res) => {
     db.burgers.findAll({}).then((dbBurger) => {
-        let hbsObj = {
-            burgers: dbBurger
-        }
-        res.render("index", hbsObj)
+        // console.log(dbBurger)
+
+        res.render("index", {
+            dbBurger
+        });
     })
 });
 
@@ -35,7 +36,9 @@ router.put("/api/burgers/:id", (req, res) => {
         where: {
             id: req.params.id
         }
-    })
+    }).then((dbBurger) => {
+        res.json(dbBurger);
+    });
 })
 
 router.delete("/api/burgers/:id", (req, res) => {

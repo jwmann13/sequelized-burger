@@ -17,7 +17,7 @@ $(document).ready(() => {
     });
 
     $('.devour').on("click", function(event){
-        // event.preventDefault();
+        event.preventDefault();
 
         let id = $(this).attr('data-id');
         let devoured = $(this).attr("data-devoured");
@@ -28,12 +28,10 @@ $(document).ready(() => {
         }
 
         console.log(devoured)
-        debugger;
         $.ajax(`/api/burgers/${id}`, {
             method: "PUT",
             data: devourData,
             error: function(err) {
-                debugger;
                 console.log(err);
             }
         }).then(function() {
@@ -43,7 +41,7 @@ $(document).ready(() => {
     });
 
     $('.delete-burger').on("click", function(event) {
-        // event.preventDefault();
+        event.preventDefault();
 
         let id = $(this).data('id');
 
