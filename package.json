@@ -4,7 +4,8 @@
   "description": "sequelized version of burger site",
   "main": "server.js",
   "scripts": {
-    "test": "nodemon server"
+    "test": "nodemon server",
+    "dev": "nodemon server"
   },
   "repository": {
     "type": "git",
