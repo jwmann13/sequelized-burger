@@ -11,7 +11,7 @@
     <ul class="list-group col-6">
         {{#each dbBurger}}
         {{#unless devoured}}
-        {{> burger-block/burger-block devoured=true}}
+        {{> burger-block devoured=true dbCustomer=../dbCustomer}}
         {{/unless}}
         {{/each}}
     </ul>
@@ -19,7 +19,7 @@
     <ul class=" list-group col-6">
         {{#each dbBurger}}
         {{#if devoured}}
-        {{> burger-block/burger-block devoured=false}}
+        {{> burger-block devoured=false dbCustomer=../dbCustomer}}
         {{/if}}
         {{/each}}
     </ul>

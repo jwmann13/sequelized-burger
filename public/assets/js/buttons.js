@@ -1,4 +1,11 @@
 $(document).ready(() => {
+    $(window).keydown(function (event) {
+        if (event.keyCode == 13) {
+            event.preventDefault();
+            return false;
+        }
+    });
+
     $('.make-burger').on("submit", (event) => {
         event.preventDefault();
 
@@ -16,7 +23,7 @@ $(document).ready(() => {
         });
     });
 
-    $('.devour').on("click", function(event){
+    $('.devour').on("click", function (event) {
         event.preventDefault();
 
         let id = $(this).attr('data-id');
@@ -28,28 +35,47 @@ $(document).ready(() => {
         }
 
         console.log(devoured)
-        $.ajax(`/api/burgers/${id}`, {
+        $.ajax(`/api/burgers/`, {
             method: "PUT",
             data: devourData,
-            error: function(err) {
+            error: function (err) {
                 console.log(err);
             }
-        }).then(function() {
+        }).then(function () {
             console.log('i eated it')
-            location.reload();
+            if ($(`#customerName${id}`).val().trim() !== '') {
+                console.log($(`#customerName${id}`).val().trim())
+
+                let newCustomer = {
+                    name: $(`#customerName${id}`).val().trim(),
+                    BurgerId: id
+                };
+
+                $.ajax("/api/customer/", {
+                    method: "POST",
+                    data: newCustomer
+                }).then(() => {
+                    console.log('new customer');
+                    location.reload();
+                });
+            } else {
+                location.reload();
+            }
         });
     });
 
-    $('.delete-burger').on("click", function(event) {
+    $('.delete-burger').on("click", function (event) {
         event.preventDefault();
 
         let id = $(this).data('id');
 
         $.ajax(`/api/burgers/${id}`, {
             method: "DELETE"
-        }).then(function() {
+        }).then(function () {
             console.log('its gone');
             location.reload();
         })
     });
+
+    var randomColor = Math.floor(Math.random()*16777215).toString(16);
 });

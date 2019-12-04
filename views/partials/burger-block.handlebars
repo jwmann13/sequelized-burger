@@ -13,4 +13,16 @@
         </button>
         <button class="btn btn-danger delete-burger" data-id="{{dataValues.id}}">DEL</button>
     </div>
+    
+    <form action="" class="make-customer col-12">
+        <div class="form-group">
+            <input class="customer-input" type="text" name="customer" id="customerName{{dataValues.id}}" autocomplete="off" placeholder="Customer Name">
+        </div>
+    </form>
+
+    {{#each dbCustomer}}
+    {{#ifeq ../dataValues.id dataValues.BurgerId}}
+    {{> customer-badge}}
+    {{/ifeq}}
+    {{/each}}
 </li>

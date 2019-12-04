@@ -16,7 +16,18 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.engine("handlebars", exphbrs({
-  defaultLayout: "main"
+  defaultLayout: "main",
+  helpers: {
+    ifeq: function(a, b, options){
+      if (a == b) {
+        return options.fn(this);
+        }
+      return options.inverse(this);
+    },
+    bar: function(){
+      return "BAR!";
+    }
+  }
 }));
 app.set("view engine", "handlebars");
 
@@ -24,7 +35,7 @@ let routes = require('./controllers/burger_controller');
 
 app.use(routes);
 
-db.sequelize.sync().then(function () {
+db.sequelize.sync({ force: false }).then(function () {
   app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
   });
