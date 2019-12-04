@@ -16,9 +16,13 @@
     
     <form action="" class="make-customer col-12">
         <div class="form-group">
-            <label for="customerName"></label>
             <input class="customer-input" type="text" name="customer" id="customerName{{dataValues.id}}" autocomplete="off" placeholder="Customer Name">
         </div>
-        <button class="btn button-outline-success"></button>
     </form>
+
+    {{#each dbCustomer}}
+    {{#ifeq ../dataValues.id dataValues.BurgerId}}
+    {{> customer-badge}}
+    {{/ifeq}}
+    {{/each}}
 </li>
