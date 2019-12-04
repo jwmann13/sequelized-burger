@@ -43,7 +43,6 @@ $(document).ready(() => {
             }
         }).then(function () {
             console.log('i eated it')
-            // location.reload();
             if ($(`#customerName${id}`).val().trim() !== '') {
                 console.log($(`#customerName${id}`).val().trim())
 
@@ -59,6 +58,8 @@ $(document).ready(() => {
                     console.log('new customer');
                     location.reload();
                 });
+            } else {
+                location.reload();
             }
         });
     });
