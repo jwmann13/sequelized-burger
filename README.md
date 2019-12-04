@@ -8,7 +8,7 @@ This application is deployed to heroku at https://gentle-journey-24761.herokuapp
 
 To view the source code clone this repo:
 
-''' git clone git@github.com:jwmann13/sequelized-burger.git ```
+``` git clone git@github.com:jwmann13/sequelized-burger.git ```
 
 or fork the repository
 
